@@ -1,5 +1,5 @@
 {
-    "name": "oseimensah/onesignal-laravel",
+    "name": "oseimensah/laravel-notification-channels-onesignal",
     "description": "OneSignal Notifications driver",
     "homepage": "https://github.com/laravel-notification-channels/onesignal",
     "license": "MIT",
