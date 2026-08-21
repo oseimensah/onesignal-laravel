@@ -1,5 +1,5 @@
 {
-    "name": "oseimensah/laravel-notification-channels-onesignal",
+    "name": "oseimensah/onesignal-laravel",
     "description": "OneSignal Notifications driver",
     "homepage": "https://github.com/laravel-notification-channels/onesignal",
     "license": "MIT",
@@ -23,6 +23,10 @@
             "name": "David Llop",
             "email": "hello@davidllop.com",
             "homepage": "http://davidllop.com"
+        },
+        {
+            "name": "Osei Mensah",
+            "email": "freddeullzy@gmail.com"
         }
     ],
     "require": {
