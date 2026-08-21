@@ -8,6 +8,7 @@ use Mockery;
 use NotificationChannels\OneSignal\Exceptions\CouldNotSendNotification;
 use NotificationChannels\OneSignal\OneSignalChannel;
 use Orchestra\Testbench\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Http\Message\ResponseInterface;
 
 class ChannelTest extends TestCase
@@ -32,7 +33,7 @@ class ChannelTest extends TestCase
         parent::tearDown();
     }
 
-    /** @test */
+    #[Test]
     public function it_can_send_a_notification()
     {
         $response = new Response(200);
@@ -56,7 +57,7 @@ class ChannelTest extends TestCase
         $this->assertInstanceOf(ResponseInterface::class, $channel_response);
     }
 
-    /** @test */
+    #[Test]
     public function it_throws_an_exception_when_it_could_not_send_the_notification()
     {
         $response = new Response(500, [], 'ResponseBody');
@@ -80,9 +81,7 @@ class ChannelTest extends TestCase
         $this->channel->send(new Notifiable(), new TestNotification());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_can_send_a_notification_with_array()
     {
         $response = new Response(200);
@@ -106,9 +105,7 @@ class ChannelTest extends TestCase
         $this->assertInstanceOf(ResponseInterface::class, $channel_response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_can_send_a_notification_with_email()
     {
         $response = new Response(200);
@@ -132,9 +129,7 @@ class ChannelTest extends TestCase
         $this->assertInstanceOf(ResponseInterface::class, $channel_response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_can_send_a_notification_with_included_segments()
     {
         $response = new Response(200);
@@ -158,9 +153,7 @@ class ChannelTest extends TestCase
         $this->assertInstanceOf(ResponseInterface::class, $channel_response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_can_send_a_notification_with_excluded_segments()
     {
         $response = new Response(200);
@@ -184,7 +177,7 @@ class ChannelTest extends TestCase
         $this->assertInstanceOf(ResponseInterface::class, $channel_response);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_send_a_notification_with_tags()
     {
         $response = new Response(200);
@@ -208,7 +201,7 @@ class ChannelTest extends TestCase
         $this->assertInstanceOf(ResponseInterface::class, $channel_response);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_send_a_notification_with_multiple_tags()
     {
         $response = new Response(200);
@@ -235,9 +228,7 @@ class ChannelTest extends TestCase
         $this->assertInstanceOf(ResponseInterface::class, $channel_response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_can_send_a_notification_with_external_ids()
     {
         $response = new Response(200);
@@ -261,7 +252,7 @@ class ChannelTest extends TestCase
         $this->assertInstanceOf(ResponseInterface::class, $channel_response);
     }
 
-    /** @test */
+    #[Test]
     public function it_sends_nothing_and_returns_null_when_player_id_empty()
     {
         $this->oneSignal->shouldReceive('sendNotificationCustom')

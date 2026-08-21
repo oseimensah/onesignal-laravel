@@ -6,6 +6,7 @@ use Illuminate\Support\Arr;
 use NotificationChannels\OneSignal\OneSignalButton;
 use NotificationChannels\OneSignal\OneSignalMessage;
 use NotificationChannels\OneSignal\OneSignalWebButton;
+use PHPUnit\Framework\Attributes\Test;
 
 class MessageTest extends \PHPUnit\Framework\TestCase
 {
@@ -18,7 +19,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->message = new OneSignalMessage();
     }
 
-    /** @test */
+    #[Test]
     public function it_can_accept_a_message_when_constructing_a_message()
     {
         $message = new OneSignalMessage('Message body');
@@ -26,7 +27,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('Message body', Arr::get($message->toArray(), 'contents.en'));
     }
 
-    /** @test */
+    #[Test]
     public function it_provides_a_create_method()
     {
         $message = OneSignalMessage::create('Message body');
@@ -34,7 +35,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('Message body', Arr::get($message->toArray(), 'contents.en'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_the_body()
     {
         $this->message->setBody('myBody');
@@ -42,7 +43,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('myBody', Arr::get($this->message->toArray(), 'contents.en'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_the_subject()
     {
         $this->message->setSubject('mySubject');
@@ -50,13 +51,13 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('mySubject', Arr::get($this->message->toArray(), 'headings.en'));
     }
 
-    /** @test */
+    #[Test]
     public function it_does_not_append_empty_subject_value_when_subject_is_null()
     {
         $this->assertEquals(null, Arr::get($this->message->toArray(), 'headings'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_the_url()
     {
         $this->message->setUrl('myURL');
@@ -64,7 +65,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('myURL', Arr::get($this->message->toArray(), 'url'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_the_increment_badge_count()
     {
         $this->message->incrementIosBadgeCount(123);
@@ -73,7 +74,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(123, Arr::get($this->message->toArray(), 'ios_badgeCount'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_the_decrement_badge_count()
     {
         $this->message->decrementIosBadgeCount(123);
@@ -82,7 +83,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(-123, Arr::get($this->message->toArray(), 'ios_badgeCount'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_the_badge_count()
     {
         $this->message->setIosBadgeCount(123);
@@ -91,7 +92,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(123, Arr::get($this->message->toArray(), 'ios_badgeCount'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_additional_data()
     {
         $this->message->setData('key_one', 'value_one');
@@ -101,7 +102,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('value_two', Arr::get($this->message->toArray(), 'data.key_two'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_additional_parameter()
     {
         $this->message->setParameter('key_one', 'value_one');
@@ -111,7 +112,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('value_two', Arr::get($this->message->toArray(), 'key_two'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_the_icon()
     {
         $this->message->setIcon('myIcon');
@@ -122,7 +123,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('myIcon', Arr::get($this->message->toArray(), 'small_icon'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_a_web_button()
     {
         $this->message->webButton(
@@ -138,7 +139,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('buttonIcon', Arr::get($this->message->toArray(), 'web_buttons.0.icon'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_a_button()
     {
         $this->message->setButton(
@@ -152,7 +153,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('buttonIcon', Arr::get($this->message->toArray(), 'buttons.0.icon'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_a_web_buttons_with_chain()
     {
         $this->message->setWebButton(
@@ -177,7 +178,7 @@ class MessageTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('buttonIcon_2', Arr::get($this->message->toArray(), 'web_buttons.1.icon'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_a_image()
     {
         $this->message->setImageAttachments('https://url.com/to/image.jpg');
