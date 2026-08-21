@@ -31,7 +31,7 @@
     ],
     "require": {
         "php": "^8.2",
-        "oseimensah/berkayk-onesignal": "dev-master",
+        "oseimensah/laravel-onesignal": "dev-master",
         "illuminate/notifications": "~9.0|~10.0|~11.0|~12.0|~13.0",
         "illuminate/support": "~7|~8|~9|~10|~11|~12|~13"
     },
